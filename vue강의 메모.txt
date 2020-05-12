@@ -64,3 +64,42 @@ Terminal 에서
 
 node 에서 절대경로 설정을 도와주는 함수(path)가 있음
 const path = require(id: 'path');
+
+---------------------------------------------------------------------------------------------------
+
+3-3
+
+main.js 를 중심으로 다른 스크립트를 모아 연결함.
+Vue 파일은 main.js에 import로 불러옴.
+
+npm run build 실행시 프로세스
+1. webpack.config.js에서 entry를 확인(스크립트를 모아둔 js파일 경로 확인)
+2. main.js에서 import를 위에서 부터 읽음
+*읽어오는 파일이 javascript가 아닐경우 에러 발생*(webpack은 기본적으로 javascript만 모아줌)
+ => 에러 발생 시 rules를 추가해야함.(/\.vue$/ 정규식 추가 후 vue-loader 다운로드)
+3. 문제가 있을 시 module의 rules가 대신 처리
+4. plugins이 output 전 한번 더 처리
+5. output 최종 결과물 출력
+
+- npm run build 실행에러 발생 시
+	에러메세지 확인 후 코드 추가 또는 다운로드 받아야 될 때가 있음
+
+require와 import의 차이
+노드환경에서는 require(id), Vue환경에서는 import
+
+vue 와 vue-template-compiler는 버전이 똑같아야 한다.(package.json에서 확인가능)
+=>만약 다를경우 Terminal 윈도우에서 npm i vue@버전(EX 2.7.0)을 입력
+
+webpack 추가 설정 
+- mode: '모드 상태' (EX. 개발할때는 'Development', 배포할 때는 'production'
+- devtool: ' ' 
+(EX. 개발할 때는 'eval', 배포할 때는 'hidden-source-map')
+eval로 설정하면 웹팩이 빌드하는 속도가 빨라짐.
+- resolve:{extensions: ['확장자', '확장자']}
+	확장자 처리(EX. '.js', '.vue')
+
+--------------------------------------------------------------------------------------------------------
+
+3-4
+v-on 은 @ 으로 생략가능
+form submit.prevent로 생략가능
