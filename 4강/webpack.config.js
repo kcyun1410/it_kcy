@@ -41,5 +41,6 @@ module.exports = {
         //현재경로(현재 webpack.config.js파일이 있는 폴더->3강 폴더)는 __dirname
         //뒤에 폴더 명을 적으면 자동으로 주소에 붙여줌
         path: path.join(__dirname, 'dist'),
+        publicPath: '/dist',
     },
 };
